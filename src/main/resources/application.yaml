@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:15432/securedb
+    username: postgres
+    password: postgres
+    tomcat:
+      max-idle: 2
+      max-active: 10
+      test-on-borrow: true
+      hikari:
+        minimum-idle: 2
+        maximum-pool-size: 10
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: false
+    show-sql: false
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+  flyway:
+    enabled: true
+    table: easycoding_schema_version
+    jackson:
+      property-naming-strategy: SNAKE_CASE
+      default-property-inclusion: non_empty
+      deserialization:
+        fail-on-unknown-properties: false
+      time-zone: ${user.timezone}
+      serialization:
+        write-dates-as-timestamps: false
+
+server:
+  port: 9091
+  servlet:
+    context-path: /auth

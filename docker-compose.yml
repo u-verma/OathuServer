@@ -1,0 +1,13 @@
+version: '3'
+services:
+  securedb-postgresql:
+    container_name: "secure-db"
+    image: library/postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: securedb
+    ports:
+      - "15432:5432"
+    volumes:
+      - $HOME/personal/db/server/secure-db :/var/lib/postgresql/data
